@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang cá nhân - Nguyễn Gia Huy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            /* Nền gradient Xanh mây kết hợp Tím mộng mơ cực cuốn hút */
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 35%, #4facfe 70%, #00f2fe 100%);
+            background-size: 200% 200%;
+            animation: cloudPurpleBg 12s ease infinite;
+            color: #252440;
+            min-height: 100vh;
+            padding: 25px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        @keyframes cloudPurpleBg {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* STICKER BAY CỐ ĐỊNH HAI BÊN RÌA */
+        .bg-sticker {
+            position: fixed;
+            font-size: 2.3rem;
+            opacity: 0.92;
+            animation: floatSticker 5s ease-in-out infinite;
+            z-index: 10;
+            user-select: none;
+            pointer-events: none;
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
+        }
+
+        @keyframes floatSticker {
+            0%, 100% { transform: translateY(0px) rotate(-6deg) scale(1); }
+            50% { transform: translateY(-14px) rotate(10deg) scale(1.1); }
+        }
+
+        .st-1 { top: 3%; left: 1.5%; animation-delay: 0s; }
+        .st-2 { top: 4%; right: 1.5%; animation-delay: 0.8s; }
+        .st-3 { top: 35%; left: 1%; animation-delay: 1.5s; }
+        .st-4 { top: 45%; right: 1%; animation-delay: 2.2s; }
+        .st-5 { bottom: 4%; left: 1.5%; animation-delay: 1.1s; }
+        .st-6 { bottom: 4%; right: 1.5%; animation-delay: 1.9s; }
+        .st-7 { top: 72%; left: 1%; animation-delay: 2.7s; }
+        .st-8 { top: 75%; right: 1%; animation-delay: 0.4s; }
+
+        /* Bố cục tổng thể phủ toàn bộ màn hình laptop */
+        .main-wrapper {
+            width: 100%;
+            max-width: 1700px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Khung thẻ kính mờ sáng nhẹ */
+        .glass-card {
+            background-color: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(14px);
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            border-radius: 24px;
+            box-shadow: 0 18px 40px rgba(118, 75, 162, 0.22);
+            padding: 36px 40px;
+        }
+
+        /* 1. PHẦN GIỚI THIỆU */
+        .hero-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.97), rgba(243, 238, 255, 0.95));
+        }
+
+        .hero-left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .hero-left h1 {
+            font-size: 2.7rem;
+            line-height: 1.2;
+            background: linear-gradient(90deg, #764ba2, #667eea, #00f2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            background: linear-gradient(135deg, #f5f3ff, #eef2ff);
+            border: 2px dashed #a78bfa;
+            border-radius: 18px;
+            padding: 20px 24px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.05rem;
+            font-style: italic;
+            color: #3b3068;
+            word-break: break-word;
+        }
+
+        .info-item:nth-child(1) i { color: #7c3aed; }
+        .info-item:nth-child(2) i { color: #6d28d9; }
+        .info-item:nth-child(3) i { color: #0284c7; }
+        .info-item:nth-child(4) i { color: #2563eb; }
+
+        .info-item i {
+            font-size: 1.25rem;
+            font-style: normal;
+            width: 24px;
+            text-align: center;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #f5f3ff, #e0f2fe);
+            border-left: 6px solid #7c3aed;
+            padding: 20px 24px;
+            border-radius: 0 18px 18px 0;
+            font-size: 1.08rem;
+            font-style: italic;
+            color: #3b3068;
+            line-height: 1.75;
+        }
+
+        .hero-social {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+
+        .hero-social span {
+            font-weight: 700;
+            color: #7c3aed;
+            font-size: 1.1rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        /* Các nút mạng xã hội tông Xanh - Tím */
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            font-size: 1.35rem;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            box-shadow: 0 6px 14px rgba(118, 75, 162, 0.25);
+        }
+
+        .social-btn:nth-child(1) { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .social-btn:nth-child(2) { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
+        .social-btn:nth-child(3) { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+        .social-btn:nth-child(4) { background: linear-gradient(135deg, #06b6d4, #0891b2); }
+        .social-btn:nth-child(5) { background: linear-gradient(135deg, #1e1b4b, #311042); }
+
+        .social-btn:hover {
+            transform: translateY(-4px) scale(1.08);
+            box-shadow: 0 10px 20px rgba(118, 75, 162, 0.4);
+        }
+
+        .hero-right {
+            flex-shrink: 0;
+        }
+
+        /* Khung ảnh đại diện viền chuyển sắc Xanh - Tím */
+        .avatar-wrapper {
+            width: 250px;
+            height: 335px;
+            border-radius: 24px;
+            padding: 6px;
+            background: linear-gradient(135deg, #764ba2, #667eea, #00f2fe);
+            box-shadow: 0 14px 30px rgba(118, 75, 162, 0.35);
+            overflow: hidden;
+        }
+
+        .avatar-wrapper img {
+            width: 100%;
+            height: 100%;
+            border-radius: 19px;
+            object-fit: cover;
+            display: block;
+            background-color: #fff;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            background: linear-gradient(90deg, #764ba2, #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            border-bottom: 3px dashed #d8b4fe;
+            padding-bottom: 12px;
+            margin-bottom: 26px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title i {
+            -webkit-text-fill-color: #7c3aed;
+        }
+
+        /* 2. HÀNH TRÌNH HỌC TẬP */
+        .journey-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .stage-card {
+            border-radius: 20px;
+            padding: 26px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .stage-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 26px rgba(118, 75, 162, 0.18);
+        }
+
+        /* Giai đoạn 1: Tím nhạt mộng mơ */
+        .stage-1 {
+            background-color: #faf5ff;
+            border: 2px solid #e9d5ff;
+            border-top: 7px solid #9333ea;
+        }
+        .stage-1 .stage-badge { background: linear-gradient(90deg, #9333ea, #a855f7); }
+        .stage-1 .stage-highlights span { color: #7e22ce; }
+
+        /* Giai đoạn 2: Tím indigo & xanh lam */
+        .stage-2 {
+            background-color: #f5f3ff;
+            border: 2px solid #ddd6fe;
+            border-top: 7px solid #6366f1;
+        }
+        .stage-2 .stage-badge { background: linear-gradient(90deg, #6366f1, #8b5cf6); }
+        .stage-2 .stage-highlights span { color: #4f46e5; }
+
+        /* Giai đoạn 3: Xanh mây sâu */
+        .stage-3 {
+            background-color: #f0f9ff;
+            border: 2px solid #bae6fd;
+            border-top: 7px solid #0284c7;
+        }
+        .stage-3 .stage-badge { background: linear-gradient(90deg, #0284c7, #2563eb); }
+        .stage-3 .stage-highlights span { color: #0369a1; }
+
+        .stage-badge {
+            align-self: flex-start;
+            color: #ffffff;
+            font-size: 0.92rem;
+            font-style: italic;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .stage-card h3 {
+            color: #252440;
+            font-size: 1.35rem;
+            line-height: 1.35;
+        }
+
+        .stage-card p {
+            font-size: 1.02rem;
+            font-style: italic;
+            color: #434063;
+            line-height: 1.68;
+        }
+
+        .stage-highlights {
+            margin-top: auto;
+            padding-top: 12px;
+            border-top: 1px dashed rgba(118, 75, 162, 0.25);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .stage-highlights span {
+            font-size: 0.98rem;
+            font-style: italic;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* 3. LƯỚI SỞ THÍCH: 4 THẺ TÔNG XANH - TÍM */
+        .hobby-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 26px;
+        }
+
+        .hobby-card {
+            border-radius: 20px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .hobby-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(118, 75, 162, 0.18);
+        }
+
+        /* Thẻ 1 */
+        .hb-1 { background-color: #faf5ff; border: 2px solid #e9d5ff; }
+        .hb-1 .hobby-tag { background-color: #f3e8ff; color: #6b21a8; }
+        .hb-1 .image-preview-box { border: 3px solid #a855f7; }
+
+        /* Thẻ 2 */
+        .hb-2 { background-color: #f5f3ff; border: 2px solid #c7d2fe; }
+        .hb-2 .hobby-tag { background-color: #e0e7ff; color: #3730a3; }
+        .hb-2 .image-preview-box { border: 3px solid #6366f1; }
+
+        /* Thẻ 3 */
+        .hb-3 { background-color: #f0f9ff; border: 2px solid #bae6fd; }
+        .hb-3 .hobby-tag { background-color: #e0f2fe; color: #075985; }
+        .hb-3 .image-preview-box { border: 3px solid #0ea5e9; }
+
+        /* Thẻ 4 */
+        .hb-4 { background-color: #fdf4ff; border: 2px solid #f5d0fe; }
+        .hb-4 .hobby-tag { background-color: #fae8ff; color: #86198f; }
+        .hb-4 .image-preview-box { border: 3px solid #d946ef; }
+
+        .hobby-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hobby-card h3 {
+            color: #252440;
+            font-size: 1.45rem;
+        }
+
+        .hobby-tag {
+            font-size: 0.92rem;
+            font-style: italic;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+        }
+
+        .image-preview-box {
+            width: 100%;
+            height: 190px;
+            border-radius: 14px;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+
+        .image-preview-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hobby-desc {
+            font-size: 1.04rem;
+            font-style: italic;
+            color: #434063;
+            line-height: 1.68;
+        }
+
+        /* 4. KHU VỰC PHÁT MV TRỰC TIẾP */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 42%;
+            height: 0;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 4px solid #764ba2;
+            box-shadow: 0 12px 28px rgba(118, 75, 162, 0.3);
+            background-color: #000;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .journey-grid {
+                grid-template-columns: 1fr;
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 850px) {
+            body {
+                padding: 15px;
+            }
+            .glass-card {
+                padding: 25px 20px;
+            }
+            .hero-section {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .intro-box {
+                text-align: left;
+            }
+            .hero-social {
+                justify-content: center;
+            }
+            .hobby-grid {
+                grid-template-columns: 1fr;
+            }
+            .video-wrapper {
+                padding-bottom: 56.25%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CÁC STICKER MÂY VÀ TÍM MỘNG MƠ BAY HAI BÊN RÌA -->
+    <div class="bg-sticker st-1">☁️</div>
+    <div class="bg-sticker st-2">💜</div>
+    <div class="bg-sticker st-3">✨</div>
+    <div class="bg-sticker st-4">🎧</div>
+    <div class="bg-sticker st-5">🌌</div>
+    <div class="bg-sticker st-6">💫</div>
+    <div class="bg-sticker st-7">🎵</div>
+    <div class="bg-sticker st-8">☁️</div>
+
+    <div class="main-wrapper">
+        <!-- PHẦN 1: GIỚI THIỆU -->
+        <section class="glass-card hero-section">
+            <div class="hero-left">
+                <h1>Nguyễn Gia Huy</h1>
+
+                <div class="info-grid">
+                    <div class="info-item">
+                        <i class="fas fa-birthday-cake"></i>
+                        <span><strong>Ngày sinh:</strong> 02/08/2009</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span><strong>Lớp:</strong> 12A6 - THPT Hòn Gai</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <span><strong>Email:</strong> nguyengiahuy02082009@gmail.com</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span><strong>Quê quán:</strong> Hạ Long, Quảng Ninh</span>
+                    </div>
+                </div>
+
+                <div class="intro-box">
+                    👋 Xin chào! Mình là Nguyễn Gia Huy, học sinh lớp 12A6 trường THPT Hòn Gai. Chào mừng bạn đã ghé thăm không gian trực tuyến nhỏ của mình – nơi lưu giữ những sở thích, niềm đam mê và phong cách cá nhân trong suốt quãng đời học sinh cấp ba đáng nhớ này! Mình là một người trầm tính, hòa đồng với bạn bè. Hiện tại, mình đang tập trung ôn luyện cho kỳ thi tốt nghiệp THPT với mục tiêu chinh phục cánh cửa đại học mơ ước.
+                </div>
+
+                <div class="hero-social">
+                    <span>Kết nối với mình:</span>
+                    <div class="social-icons">
+                        <a href="https://facebook.com" target="_blank" class="social-btn" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" class="social-btn" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://threads.net" target="_blank" class="social-btn" title="Threads">
+                            <i class="fab fa-threads"></i>
+                        </a>
+                        <a href="https://tiktok.com" target="_blank" class="social-btn" title="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://github.com/huyluki1" target="_blank" class="social-btn" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-right">
+                <div class="avatar-wrapper">
+                    <img src="avatar.jpg" alt="Ảnh đại diện Nguyễn Gia Huy">
+                </div>
+            </div>
+        </section>
+
+        <!-- PHẦN 2: HÀNH TRÌNH HỌC TẬP -->
+        <section class="glass-card">
+            <h2 class="section-title"><i class="fas fa-route"></i> Hành trình học tập cấp ba</h2>
+
+            <div class="journey-grid">
+                <div class="stage-card stage-1">
+                    <span class="stage-badge">Giai đoạn 1 • Lớp 10 (2024 - 2025)</span>
+                    <h3>Khởi đầu mới tại THPT Hòn Gai</h3>
+                    <p>
+                        Bước chân vào ngôi trường mới với bao bỡ ngỡ, mình nhanh chóng làm quen với môi trường học tập năng động, thầy cô tận tâm và những người bạn cùng lớp 10A6. Đây là thời gian mình xây dựng nền tảng kiến thức cơ bản và khám phá thế mạnh của bản thân.
+                    </p>
+                    <div class="stage-highlights">
+                        <span><i class="fas fa-check-circle"></i> Thích nghi môi trường THPT</span>
+                        <span><i class="fas fa-check-circle"></i> Xây dựng thói quen tự học</span>
+                    </div>
+                </div>
+
+                <div class="stage-card stage-2">
+                    <span class="stage-badge">Giai đoạn 2 • Lớp 11 (2025 - 2026)</span>
+                    <h3>Bứt phá kiến thức & Định hướng</h3>
+                    <p>
+                        Tập trung chuyên sâu vào các môn học trọng tâm, rèn luyện tư duy logic và giải quyết các dạng bài tập nâng cao. Bên cạnh việc học trên lớp, mình cũng bắt đầu tìm hiểu thêm về lập trình web cơ bản để tự tay xây dựng góc nhỏ cá nhân này.
+                    </p>
+                    <div class="stage-highlights">
+                        <span><i class="fas fa-check-circle"></i> Củng cố kiến thức chuyên sâu</span>
+                        <span><i class="fas fa-check-circle"></i> Khám phá HTML, CSS & Công nghệ</span>
+                    </div>
+                </div>
+
+                <div class="stage-card stage-3">
+                    <span class="stage-badge">Giai đoạn 3 • Lớp 12 (2026 - 2027)</span>
+                    <h3>Tăng tốc & Chinh phục Đại học</h3>
+                    <p>
+                        Chặng nước rút quan trọng nhất của quãng đời học sinh tại lớp 12A6. Mình đang dồn toàn lực hệ thống hóa kiến thức, luyện đề mỗi ngày với tinh thần kỷ luật cao nhất để sẵn sàng cho kỳ thi Tốt nghiệp THPT và chạm tay vào ngôi trường đại học mơ ước.
+                    </p>
+                    <div class="stage-highlights">
+                        <span><i class="fas fa-bullseye"></i> Mục tiêu: Đỗ nguyện vọng 1</span>
+                        <span><i class="fas fa-fire"></i> Quyết tâm cao độ mỗi ngày</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PHẦN 3: SỞ THÍCH CHI TIẾT -->
+        <section class="glass-card">
+            <h2 class="section-title"><i class="fas fa-star"></i> Sở thích & Đam mê cá nhân</h2>
+
+            <div class="hobby-grid">
+                <div class="hobby-card hb-1">
+                    <div class="hobby-header">
+                        <h3>🎨 Vẽ & Sáng tạo</h3>
+                        <span class="hobby-tag">Nghệ thuật</span>
+                    </div>
+                    <div class="image-preview-box">
+                        <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=600&q=80" alt="Vẽ">
+                    </div>
+                    <p class="hobby-desc">
+                        Những lúc rảnh rỗi sau giờ ôn thi căng thẳng, mình thường phác họa vài nét vẽ tự do hoặc thiết kế giao diện nhỏ. Vẽ giúp mình rèn sự tỉ mỉ, kiên nhẫn và giải tỏa áp lực cực kỳ hiệu quả.
+                    </p>
+                </div>
+
+                <div class="hobby-card hb-2">
+                    <div class="hobby-header">
+                        <h3>🎮 Chơi game</h3>
+                        <span class="hobby-tag">Giải trí</span>
+                    </div>
+                    <div class="image-preview-box">
+                        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80" alt="Chơi game">
+                    </div>
+                    <p class="hobby-desc">
+                        Mình thích các tựa game chiến thuật, MOBA như Liên Quân Mobile để giao lưu cùng bạn bè sau giờ học. Đây cũng là cách giúp rèn luyện tư duy phản xạ nhanh và tinh thần phối hợp đồng đội.
+                    </p>
+                </div>
+
+                <div class="hobby-card hb-3">
+                    <div class="hobby-header">
+                        <h3>🎬 Xem phim</h3>
+                        <span class="hobby-tag">Điện ảnh</span>
+                    </div>
+                    <div class="image-preview-box">
+                        <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=600&q=80" alt="Xem phim">
+                    </div>
+                    <p class="hobby-desc">
+                        Mình đam mê những bộ phim hành động, viễn tưởng và hoạt hình có cốt truyện sâu sắc. Mỗi bộ phim hay không chỉ mang lại phút giây thư giãn mà còn mở ra nhiều góc nhìn thú vị về cuộc sống.
+                    </p>
+                </div>
+
+                <div class="hobby-card hb-4">
+                    <div class="hobby-header">
+                        <h3>🎧 Nghe nhạc</h3>
+                        <span class="hobby-tag">K-Pop & Chill</span>
+                    </div>
+                    <div class="image-preview-box">
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" alt="Nghe nhạc">
+                    </div>
+                    <p class="hobby-desc">
+                        Âm nhạc luôn đồng hành cùng mình trong lúc làm bài tập lẫn khi nghỉ ngơi. Mình đặc biệt yêu thích các nhóm nhạc K-Pop như NMIXX, IVE, aespa với giai điệu cuốn hút và năng lượng tích cực.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PHẦN 4: TRÌNH PHÁT MV TRỰC TIẾP -->
+        <section class="glass-card">
+            <h2 class="section-title"><i class="fab fa-youtube"></i> MV Yêu thích: NMIXX - "Blue Valentine"</h2>
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/EmeW6li6bbo?rel=0" 
+                    title="NMIXX Blue Valentine M/V" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
